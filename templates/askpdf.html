@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ask PDF</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px 100px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 30%;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+
+            display: inline-block; 
+            text-align: left; 
+            width: 100%;
+            margin: 10px 0 5px;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .response {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .background-image {
+            position: fixed; 
+           
+            width: 290px;
+            height: 365px; 
+            background-image: url('../static/Img/output-onlinepngtools.png'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            z-index: 91; 
+            margin-left: 700px;
+            
+        }
+        @media (max-width: 768px) {
+            .background-image {
+                display: none; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ask Your PDF</h1>
+        <form action="/askpdf" method="post" enctype="multipart/form-data">
+            <label for="query">Enter your question:</label>
+            <input type="text" name="query" id="query" required><br>
+            <label for="pdf_file">Upload PDF:</label>
+            <input type="file" name="pdf_file" id="pdf_file" required><br>
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if response_text %}
+        <div class="response">
+            <h2>Response:</h2>
+            <p>{{ response_text }}</p>
+        </div>
+        {% endif %}
+    </div>
+    <div class="background-image"></div>
+</body>
+</html>

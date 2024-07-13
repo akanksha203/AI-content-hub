@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generative AI Question Answering</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+        p {
+            text-align: center;
+            color: #555;
+        }
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            width: 60%;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #ffffff;
+            color: #333;
+            font-size: 16px;
+        }
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px 100px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 30%;
+            max-width: 600px; 
+            margin: 20px auto; 
+        }
+        h2 {
+            color: #333;
+            margin-top: 20px;
+        }
+        p.response_text {
+            color: #333;
+            text-align: left;
+            margin-top: 10px;
+        }
+        .background-image {
+            position: fixed;
+            width: 290px;
+            height: 365px;
+            background-image: url('../static/Img/output-onlinepngtools.png'); /* Background image path */
+            background-size: cover;
+            background-repeat: no-repeat;
+            z-index: 91;
+            top: 72px; 
+            right: 160px; 
+        }
+        @media (max-width: 768px) {
+            .background-image {
+                display: none; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Generative AI Question Answering</h1>
+        <p>Welcome to the Generative AI Question Answering App! Enter your question, and let the model generate a response for you.</p>
+        <form method="post" action="/text_generator">
+            <input type="text" name="question" placeholder="Input your question here" required>
+            <button type="submit">Submit</button>
+        </form>
+        {% if response_text %}
+        <div>
+            <h2>Generated Response:</h2>
+            <p class="response_text">{{ response_text }}</p>
+        </div>
+        {% endif %}
+    </div>
+    <div class="background-image"></div>
+</body>
+</html>
